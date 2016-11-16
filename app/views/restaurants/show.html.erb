@@ -1,0 +1,43 @@
+<h1 class="text-center"><%= @restaurant.name %></h1>
+<br>
+<div class="container">
+  <div class="row">
+    <div id="restaurant-details" class="col-xs-12 col-md-3 col-md-offset-3">
+      <h2>Details:</h2>
+      <h4>Category: <%= @restaurant.category.capitalize %></h4>
+      <h4>Address: <%= @restaurant.address %></h4>
+      <h4>Phone: <%= @restaurant.phone_number %></h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div id="restaurant-reviews" class="col-xs-12 col-md-3 col-md-offset-3">
+      <h2>Reviews:</h2>
+      <table class="table table-striped">
+        <thead>
+          <th>Comments</th>
+          <th>Rating</th>
+        </thead>
+        <tbody>
+          <% @restaurant.reviews.each do |review| %>
+          <tr>
+            <td><%= review.content %> </td>
+            <td><%= review.rating %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-danger"%>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-3 col-md-offset-3">
+      <%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>
